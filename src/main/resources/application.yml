@@ -1,0 +1,36 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: microservicio-bootcoin-subscriptor
+  data:
+    mongodb:
+      uri: mongodb+srv://admins1:F7Or20pCn4AgMb5U@clusterntt-s1.pbqqr.mongodb.net/db_bootcoin?retryWrites=true&w=majority
+  kafka:
+    bootstrap-servers: rocket-01.srvs.cloudkafka.com:9094,rocket-02.srvs.cloudkafka.com:9094,rocket-03.srvs.cloudkafka.com:9094
+    properties:
+      security:
+        protocol: SASL_SSL
+      sasl:
+        mechanism: SCRAM-SHA-256
+        jaas:
+          config: org.apache.kafka.common.security.scram.ScramLoginModule required username="dovr8xz5" password="dsHXE8ZLWbvhSoSinJAdc2ulq174yATa";
+  cloud:
+    function:
+      definition: saveCurrency;saveWallet;saveTransaction;sendCurrency;receiveCurrency
+    stream:
+      bindings:
+        saveCurrency-in-0:
+          destination: dovr8xz5-currency
+        saveWallet-in-0:
+          destination: dovr8xz5-wallet
+        saveTransaction-in-0:
+          destination: dovr8xz5-transaction
+        sendCurrency-out-0:
+          destination: dovr8xz5-sendCurrency
+        sendCurrency-in-0:
+          destination: dovr8xz5-sendCurrency
+        receiveCurrency-out-0:
+          destination: dovr8xz5-receiveCurrency
+        receiveCurrency-in-0:
+          destination: dovr8xz5-receiveCurrency
