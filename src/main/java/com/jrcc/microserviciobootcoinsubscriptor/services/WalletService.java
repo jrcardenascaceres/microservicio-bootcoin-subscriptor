@@ -56,12 +56,12 @@ public class WalletService {
             //Disminuye moneda virtual en el monedero BootCoin
             wallet.setBalance(wallet.getBalance() - transaction.getAmount());
             //Incrementa dinero de cuenta
-            accountRepository.findById(wallet.getIdCard()).map(account -> {
+            /*accountRepository.findById(wallet.getIdAccount()).map(account -> {
                 var newBalance = account.getBalance() + (transaction.getAmount() * currencyRepository.findById(wallet.getIdCurrency()).map(Currency::getSellingRate).block());
                 account.setBalance(newBalance);
                 return account;
             }).flatMap(accountRepository::save);
-            log.info("sendCurrency");
+            log.info("sendCurrency");*/
             return wallet;
         }).flatMap(walletRepository::save).subscribe();
     }
@@ -72,11 +72,11 @@ public class WalletService {
             //Incrementa moneda virtual en el monedero BootCoin
             wallet.setBalance(wallet.getBalance() + transaction.getAmount());
             //Disminuye dinero de cuenta
-            accountRepository.findById(wallet.getIdCard()).map(account -> {
+            /*accountRepository.findById(wallet.getIdAccount()).map(account -> {
                 var newBalance = account.getBalance() - (transaction.getAmount() * currencyRepository.findById(wallet.getIdCurrency()).map(Currency::getSellingRate).block());
                 account.setBalance(newBalance);
                 return account;
-            }).flatMap(accountRepository::save);
+            }).flatMap(accountRepository::save);*/
             log.info("receiveCurrency");
             return wallet;
         }).flatMap(walletRepository::save).subscribe();

@@ -29,9 +29,9 @@ public class Wallet {
     private String cellphoneNumber;
     private String email;
     private Double balance;
-    @Field("id_card")
-    @JsonProperty("id_card")
-    private String idCard;
+    @Field("id_account")
+    @JsonProperty("id_account")
+    private String idAccount;
     @Field("creation_date")
     @JsonProperty("creation_date")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss", timezone = "America/Lima")
